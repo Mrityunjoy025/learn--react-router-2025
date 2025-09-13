@@ -12,7 +12,7 @@ React.useEffect(() => {
 
 const hostVansEls = vanData.map(van => (
     <Link 
-    to={`/host/hostVans/${van.id}`}
+    to={van.id}
     key={van.id}
     className="host-van-link-wrapper"
     >

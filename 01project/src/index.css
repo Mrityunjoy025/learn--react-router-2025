@@ -68,7 +68,7 @@ footer {
   flex-shrink: 0;
   justify-content:center;
   align-items: center;
-  margin-top:auto;
+  margin-top:50px;
   font-weight: 500;
 }
 
@@ -182,6 +182,15 @@ footer {
   padding-inline: 23px;
 }
 
+.van-list-filter-buttons {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.van-list-filter-buttons > a {
+  margin-right: 15px;
+}
+
 .van-list {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -226,7 +235,7 @@ footer {
 }
 
 .van-type.selected {
-  outline:none;
+  outline:#ffead0;
 }
 
 .van-type.simple:hover, .van-type.simple.selected {
@@ -234,7 +243,7 @@ footer {
 }
 
 .van-type.rugged:hover, .van-type.rugged.selected {
-  background-color: #115e59;
+  background-color: cyan;
 }
 
 .van-type.luxury:hover, .van-type.luxury.selected {
@@ -428,4 +437,14 @@ i[class*='van-type-']{
 .host-van-detail-image { 
   height: 100px;
   border-radius: -5px;
+}
+
+.not-found-container {
+  padding-inline: 26px;
+}
+
+.not-found-container .link-button {
+  width: 100%;
+  background-color: #161616;
+  color: white;
 }

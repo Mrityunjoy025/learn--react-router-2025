@@ -1,10 +1,15 @@
 import { createRoot } from 'react-dom/client'
 import './index.css'
-import { BrowserRouter , Routes, Route, Link } from 'react-router-dom'
-import Home from "./pages/Vans/Home.jsx"
-import About from "./pages/Vans/About.jsx"
-import Vans from "./pages/Vans.jsx"
-import VanDetail from "./pages/VanDetail.jsx"
+import { 
+  RouterProvider,
+  createBrowserRouter,
+  createRoutesFromElements,
+  Route, Link } from 'react-router-dom'
+import Home from "./pages/Home.jsx"
+import About from "./pages/About.jsx"
+import NotFound from "./pages/notFound.jsx"
+import Vans from "./pages/Vans/Vans.jsx"
+import VanDetail from "./pages/Vans/VanDetail.jsx"
 import Layout from "./components/Layout.jsx"
 import Dashboard from "./pages/Host/Dashboard.jsx"
 import Income from "./pages/Host/Income.jsx"
@@ -18,16 +23,10 @@ import HostVanPricing from "./pages/Host/HostVanPricing.jsx"
 
 import { startMirage } from '../server.js';
 
-if(process.env.NODE_ENV === 'development'){
-  startMirage();
-}
+startMirage();
 
-
-function App() {
-return (
-  <BrowserRouter>
-   <Routes>
-     <Route element={<Layout />} >
+const router = createBrowserRouter(createRoutesFromElements(
+ <Route element={<Layout />} >
       <Route index element={<Home />} />
       <Route path="about" element={<About />} />
       <Route path="vans" element={<Vans />} />
@@ -45,9 +44,14 @@ return (
             <Route path="photos" element={<HostVanPhotos />} />
             </Route>
        </Route> 
-     </Route>
-    </Routes>
-    </BrowserRouter>
+          <Route path="*" element={<NotFound />} />
+      </Route>
+))
+
+
+function App() {
+return (
+  <RouterProvider router={router} />
   )
 }
 
